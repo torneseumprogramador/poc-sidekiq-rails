@@ -36,4 +36,30 @@ Template da imagem Docker
 <div style="display: inline_block">
   <h2>Comando para Build do Docker</H2>
 </div>
-<h2> docker compose run --no-deps web rails new . --force --database=postgresql</h2>
+<h2>docker compose run --no-deps web rails new . --force --database=postgresql</h2>
+<h2>Subistitua o arquivo a config  do banco config/database.yml<h2><br>
+
+```yaml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: password
+  pool: 5
+
+development:
+  <<: *default
+  database: db_development
+
+
+test:
+  <<: *default
+  database: db_test
+```
+<br>
+<h2>docker-compose run web rake db:create</h2>
+<br>
+<h2>docker compose build</h2>
+<br>
+<h2>docker compose up</h2>
