@@ -16,8 +16,8 @@ funcionalidade de importação assíncrona de dados da API do IBGE usando Sideki
 
 <h2>Requisitos:</h2>
 Configuração do Ambiente:<br>
-• UGlize Docker e Docker Compose para configurar o ambiente de desenvolvimento.<br>
-• UGlize Ruby on Rails, PostgreSQL e Sidekiq.<br>
+• Utilize Docker e Docker Compose para configurar o ambiente de desenvolvimento.<br>
+• Utilize Ruby on Rails, PostgreSQL e Sidekiq.<br>
 <h2>Desenvolvimento da Aplicação MVC:</h2>
 • Implemente uma aplicação Ruby on Rails com funcionalidades CRUD para cidades e
 estados.<br>
@@ -26,7 +26,7 @@ estados.<br>
 <h2>Integração com API do IBGE:</h2>
 • Crie um botão "importar" que cria um job no Sidekiq para importar informações de
 cidades e estados da API do IBGE.<br>
-• UGlize a API do  <a href="https://servicodados.ibge.gov.br/api/docs/localidades">IBGE</a></p> para obter os
+• Utilize a API do  <a href="https://servicodados.ibge.gov.br/api/docs/localidades">IBGE</a></p> para obter os
 dados.<br>
 • Armazene as informações importadas no banco de dados.
 <br><br>
