@@ -1,0 +1,41 @@
+version: '3'
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - mynetwork
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root1234
+    networks:
+      - mynetwork
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+      - postgres
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: f7656588-39fa-475a-84bc-421472d8ef72
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: cidade_estado
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root1234
+    networks:
+      - mynetwork
+    command: ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+
+networks:
+  mynetwork:
