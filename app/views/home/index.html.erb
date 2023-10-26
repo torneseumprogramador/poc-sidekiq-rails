@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @distritos.each do |destrito| %>
+            <tr>
+                <td><%= destrito.id %></td>
+                <td><%= destrito.nome %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -26,6 +26,7 @@ services:
     depends_on:
       - redis
       - postgres
+      - sidekiq
     environment:
       RAILS_ENV: production
       SECRET_KEY_BASE: f7656588-39fa-475a-84bc-421472d8ef72
@@ -36,6 +37,24 @@ services:
     networks:
       - mynetwork
     command: ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+
+  sidekiq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+      - postgres
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: f7656588-39fa-475a-84bc-421472d8ef72
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: cidade_estado
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root1234
+    networks:
+      - mynetwork
+    command: ["bundle", "exec", "sidekiq"]
 
 networks:
   mynetwork:
