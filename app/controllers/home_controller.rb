@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
     def index
-
-    @distritos = Distrito.all
+        ConsultaIbgeJob.perform_later
+        @distritos = Distrito.all
     end
 end

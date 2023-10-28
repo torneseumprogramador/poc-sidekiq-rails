@@ -36,8 +36,8 @@ services:
       REDIS_URL: redis://redis:6379
     networks:
       - mynetwork
-    command: ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
-
+    command: >
+      sh -c "rails db:create && rails db:migrate && rake assets:precompile && rails server -b 0.0.0.0 -p 3000"
   sidekiq:
     build:
       context: .

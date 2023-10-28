@@ -7,12 +7,12 @@ class ConsultaIbgeJob < ApplicationJob
 
   def perform(*args)
     # IBGE
-    uri = URI('https://servicodados.ibge.gov.br/api/v1/localidades/distritos')
+    uri = URI('http://servicodados.ibge.gov.br/api/v1/localidades/distritos')
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = false
 
     # Desativar verificação SSL - LEMBRE-SE, isto é para desenvolvimento/teste somente!
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
     request = Net::HTTP::Get.new(uri.request_uri)
 
